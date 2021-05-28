@@ -111,7 +111,7 @@ export const Form = styled.form`
       outline: none;
     }
   }
-  &.add-product {
+  &.add-quote {
     text-align: center;
     input,
     textarea {
