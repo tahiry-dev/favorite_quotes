@@ -14,7 +14,7 @@ const Footer = () => (
       <br />
         Madagascar
       <br />
-      +261 32 04 240 06
+      +261 00 00 240 06
     </address>
 
         <ul>
