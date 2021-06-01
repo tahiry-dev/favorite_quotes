@@ -18,7 +18,7 @@ either from you personally or from others.
 - Users can click on a quote image to be routed to the quote show page where they can read it clearly
 - All the data manipulation and login system is handled by a Rails Backend API
 
-## This web app is live, you can check it here: [Live demo]()
+## This web app is live, you can check it here: [Live demo](https://favorite-quotes.vercel.app/)
 
 ## Screenshot of the app.
 
