@@ -14,47 +14,47 @@ import Help from './Help';
 import { loginFromStorage } from '../apiCall/userSlice';
 
 const Main = () => {
-    const loggedIn = useSelector(state => state.user.loggedIn);
+  const loggedIn = useSelector((state) => state.user.loggedIn);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (!loggedIn) {
-            const userData = localStorage.getItem('currentUser');
-            if (userData) {
-                const { user } = JSON.parse(userData);
-                dispatch(loginFromStorage(user));
-            }
-        }
-    }, [dispatch, loggedIn]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!loggedIn) {
+      const userData = localStorage.getItem('currentUser');
+      if (userData) {
+        const { user } = JSON.parse(userData);
+        dispatch(loginFromStorage(user));
+      }
+    }
+  }, [dispatch, loggedIn]);
 
-    return (
-        <>
-            <Switch>
-                <Route exact path="/login">
-                    {loggedIn ? <Redirect to="/" /> : <Login />}
-                </Route>
-                <Route exact path="/sign_up">
-                    {loggedIn ? <Redirect to="/" /> : <SignUp />}
-                </Route>
-                <Route exact path="/dashboard">
-                    {loggedIn ? <Dashboard /> : <Redirect to="/login" />}
-                </Route>
-                <Route exact path="/creations">
-                    {loggedIn ? <QuoteCreations /> : <Redirect to="/login" />}
-                </Route>
-                <Route exact path="/favorites">
-                    {loggedIn ? <Favorites /> : <Redirect to="/login" />}
-                </Route>
-                <Route exact path="/account">
-                    {loggedIn ? <UserDetails /> : <Redirect to="/login" />}
-                </Route>
-                <Route exact path="/quotes" component={Quotes} />
-                <Route exact path="/help" component={Help} />
-                <Route exact path="/quotes/:id" component={QuoteDetails} />
-                <Route path="*" component={Home} />
-            </Switch>
-        </>
-    );
+  return (
+    <>
+      <Switch>
+        <Route exact path="/login">
+          {loggedIn ? <Redirect to="/" /> : <Login />}
+        </Route>
+        <Route exact path="/sign_up">
+          {loggedIn ? <Redirect to="/" /> : <SignUp />}
+        </Route>
+        <Route exact path="/dashboard">
+          {loggedIn ? <Dashboard /> : <Redirect to="/login" />}
+        </Route>
+        <Route exact path="/creations">
+          {loggedIn ? <QuoteCreations /> : <Redirect to="/login" />}
+        </Route>
+        <Route exact path="/favorites">
+          {loggedIn ? <Favorites /> : <Redirect to="/login" />}
+        </Route>
+        <Route exact path="/account">
+          {loggedIn ? <UserDetails /> : <Redirect to="/login" />}
+        </Route>
+        <Route exact path="/quotes" component={Quotes} />
+        <Route exact path="/help" component={Help} />
+        <Route exact path="/quotes/:id" component={QuoteDetails} />
+        <Route path="*" component={Home} />
+      </Switch>
+    </>
+  );
 };
 
 export default Main;

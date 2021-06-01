@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import background from '../Home/HomePageAssets/zen.jpeg';
+import background from './HomePageAssets/zen.jpeg';
 
 const Container = styled.section`
   background: url(${background});

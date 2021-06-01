@@ -7,41 +7,41 @@ import { getQuotes } from '../../apiCall/quoteSlice';
 import { QuotesContainer, SliderPaginationContainer, Button } from './QuoteStyles.styled';
 
 const UserFavorites = () => {
-    const currentUser = useSelector(state => state.user.user);
-    const loading = useSelector(state => state.quote.loaders.loadingQuotes);
-    const error = useSelector(state => state.quote.errors.loadingQuotes);
-    const quotes = useSelector(state => state.quote.quotes);
+  const currentUser = useSelector((state) => state.user.user);
+  const loading = useSelector((state) => state.quote.loaders.loadingQuotes);
+  const error = useSelector((state) => state.quote.errors.loadingQuotes);
+  const quotes = useSelector((state) => state.quote.quotes);
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getQuotes());
-    }, [dispatch]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getQuotes());
+  }, [dispatch]);
 
-    const quoteItems = [...quotes]
-        .filter(quote => quote.favorited_by.some(favorite => favorite.id === currentUser.id))
-        .map(quote => <Quote key={quote.id} quote={quote} />);
+  const quoteItems = [...quotes]
+    .filter((quote) => quote.favorited_by.some((favorite) => favorite.id === currentUser.id))
+    .map((quote) => <Quote key={quote.id} quote={quote} />);
 
-    return (
-        <QuotesContainer>
-            {loading ? <Loading /> : null}
-            {error ? <Error errors={error} /> : null}
-            <div className="slider">
-                {quoteItems.length === 0 && !loading && !error ? (
-                    <div className="no-quotes">
-                        <p>No quotes favorited by you.</p>
-                        <Button to="/quotes"> Browse quotes</Button>
-                    </div>
-                ) : (
-                    quoteItems
-                )}
-            </div>
+  return (
+    <QuotesContainer>
+      {loading ? <Loading /> : null}
+      {error ? <Error errors={error} /> : null}
+      <div className="slider">
+        {quoteItems.length === 0 && !loading && !error ? (
+          <div className="no-quotes">
+            <p>No quotes favorited by you.</p>
+            <Button to="/quotes"> Browse quotes</Button>
+          </div>
+        ) : (
+          quoteItems
+        )}
+      </div>
 
-            <SliderPaginationContainer>
-                Total:
+      <SliderPaginationContainer>
+        Total:
         {quoteItems.length}
-            </SliderPaginationContainer>
-        </QuotesContainer>
-    );
+      </SliderPaginationContainer>
+    </QuotesContainer>
+  );
 };
 
 export default UserFavorites;

@@ -7,32 +7,32 @@ import Sidebar from './Sidebar';
 import { MainContainer } from '../../components/Styles.styled';
 
 const MobileLayout = ({ children, quotePage, title }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen((isOpen) => !isOpen);
 
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(isOpen => !isOpen);
-
-    return (
-        <>
-            <Sidebar isOpen={isOpen} toggle={toggle} />
-            <MainContainer sidebarIsOpen={isOpen}>
-                <MobileNavbar
-                    sidebarIsOpen={isOpen}
-                    toggle={toggle}
-                    quotePage={quotePage}
-                    title={title}
-                />
-                {children}
-            </MainContainer>
-        </>
-    );
+  return (
+    <>
+      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <MainContainer sidebarIsOpen={isOpen}>
+        <MobileNavbar
+          sidebarIsOpen={isOpen}
+          toggle={toggle}
+          quotePage={quotePage}
+          title={title}
+        />
+        {children}
+      </MainContainer>
+    </>
+  );
 };
 
 MobileLayout.propTypes = {
-    title: PropTypes.string.isRequired,
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node,
-    ]).isRequired,
+  quotePage: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default MobileLayout;

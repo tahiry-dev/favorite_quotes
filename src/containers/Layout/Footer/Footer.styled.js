@@ -36,4 +36,3 @@ export const Logo = styled(Link)`
     margin-bottom: 10px;
   }
 `;
-

@@ -72,7 +72,6 @@ export const VideoLink = styled.a`
   }
 `;
 
-
 export const DownArrow = styled(ScrollLink)`
   position: absolute;
   bottom: 30px;

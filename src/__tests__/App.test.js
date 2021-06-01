@@ -7,19 +7,18 @@ import store from '../redux/store';
 import App from '../App';
 
 afterEach(() => {
-    cleanup();
+  cleanup();
 });
 
 test('renders the home page with no errors', () => {
-    const { getAllByText } = render(
-        <Provider store={store}>
-            <Router>
-                <App />
-            </Router>
-        </Provider>,
-    );
+  const { getAllByText } = render(
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+  );
 
-    expect(typeof getAllByText(/Quotes/i)).toStrictEqual('object');
-    expect(getAllByText(/Quotes/i).length).toBeGreaterThanOrEqual(1);
+  expect(typeof getAllByText(/Quotes/i)).toStrictEqual('object');
+  expect(getAllByText(/Quotes/i).length).toBeGreaterThanOrEqual(1);
 });
-
