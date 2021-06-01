@@ -22,7 +22,9 @@ either from you personally or from others.
 
 ## Screenshot of the app.
 
-![image](readme-assets/app-screenshot.png)
+![screenshot](https://user-images.githubusercontent.com/47100064/120359832-cc55cc00-c310-11eb-9bee-7b478a709a77.png)
+![screenshot](https://user-images.githubusercontent.com/47100064/120360894-ee038300-c311-11eb-89ef-16fe9ff7de91.png)
+![screenshot](https://user-images.githubusercontent.com/47100064/120360364-569e3000-c311-11eb-87fd-952ef3ad3d6f.png)
 
 ## Rails Backend [github link](https://github.com/tahiry-dev/favorite_quotes_api/tree/feature_branch)
 
