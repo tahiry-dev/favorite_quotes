@@ -26,7 +26,7 @@ const LoginForm = () => {
                 <input
                     name="email"
                     placeholder="Email"
-                    defaultValue="yourName@example.com"
+                    defaultValue="exampleAccount@example.com"
                     ref={register({
                         required: {
                             value: true,

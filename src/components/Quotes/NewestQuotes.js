@@ -10,7 +10,7 @@ const NewestQuotes = () => {
 
     return (
         <div>
-            <h1>Newest Products</h1>
+            <h1>Newest Quotes</h1>
             {quotesItems}
         </div>
     );

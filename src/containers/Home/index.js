@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import HeroSection from './Hero';
 import DashboardSection from './Dashboard';
 import DesignerSection from './Design';
-import TestimonialSection from './PeopleSection';
+import TestimonialSection from './Testimonials/index';
 import FreeSection from './FreeSection';
 import Layout from '../Layout';
 

@@ -1,13 +1,13 @@
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
-import logo from '../../../assets/logo.png';
+import logo from '../../Home/HomePageAssets/logo.png';
 import { Container, Logo } from './Footer.styled';
 
 const Footer = () => (
     <Container>
         <Logo to="/">
             <img src={logo} alt="brand logo" width="100" />
-      Crafts
-    </Logo>
+            <p className="logo-title">Quotes</p>
+        </Logo>
 
         <address>
             Mahazoarivo Nord Antsirabe

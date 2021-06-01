@@ -67,7 +67,7 @@ const ShowQuote = ({ id }) => {
                     <div className="flex">
                         <div className="details">
                             <img
-                                src="https://unsplash.com/photos/z1d-LP8sjuI"
+                                src="http://unsplash.it/100/100?gravity=center"
                                 alt="Random unsplash img"
                                 width="50"
                                 height="50"

@@ -6,7 +6,7 @@ const SignUp = () => (
         <div className="wrapper">
             <header>
                 <h1>Sign up</h1>
-                <p>Hello there! Sign up and start managing your system</p>
+                <p>Hello there! Sign up and start sharing your thoughts</p>
             </header>
 
             <SignUpForm />

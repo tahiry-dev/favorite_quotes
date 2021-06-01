@@ -27,20 +27,20 @@ export const HeroBg = styled.div`
 `;
 
 export const HeroContent = styled.div`
-  text-align: center;
   z-index: 5;
   color: #fff;
   line-height: 0.9;
   text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
-  h1 {
-    font-size: 1.9rem;
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
-  p {
+  margin-left: -60%;
+  margin-bottom: 5%;
+  width: 30%;
+  figure {
     line-height: 1.2;
     margin-bottom: 15px;
     font-size: 1.2rem;
+  }
+  h1 {
+    margin-bottom: 7px;
   }
   .actions {
     text-transform: uppercase;
@@ -48,6 +48,8 @@ export const HeroContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2px;
+    margin-left: -50px;
   }
 `;
 
@@ -58,6 +60,16 @@ export const Button = styled(Link)`
   margin-right: 10px;
   font-size: 0.675rem;
   text-shadow: none;
+`;
+
+export const VideoLink = styled.a`
+  display: flex;
+  align-items: center;
+  font-size: 0.675rem;
+  & > :first-child {
+    margin-right: 5px;
+    font-size: 25px;
+  }
 `;
 
 

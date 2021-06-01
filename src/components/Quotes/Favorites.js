@@ -3,12 +3,12 @@ import MobileLayout from '../../containers/Layout/MobileLayout';
 
 import { MobileContainer } from '../Styles.styled';
 
-const Products = () => (
-    <MobileLayout title="My favorites" productPage={false}>
+const Favorites = () => (
+    <MobileLayout title="My favorites" quotePage={false}>
         <MobileContainer>
             <UserFavorites />
         </MobileContainer>
     </MobileLayout>
 );
 
-export default Products;
+export default Favorites;

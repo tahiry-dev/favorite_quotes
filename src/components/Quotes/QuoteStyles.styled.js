@@ -3,20 +3,14 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export const QuotesContainer = styled.section`
+  margin-left: 90px;
   height: 80vh;
   max-height: 480px;
-  display: grid;
-  grid-template-columns: 1px 1fr 1px;
-  & > * {
-    grid-column: 2 / -2;
-  }
-  & > .slider {
-    grid-column: 1 / -1;
-  }
   .slider {
     gap: 15px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
     -ms-overflow-style: none;
@@ -32,18 +26,14 @@ export const QuotesContainer = styled.section`
 `;
 
 export const QuoteContainer = styled.article`
-  width: 320px;
-  max-width: 92%;
+  width: 33.33%;
   height: 100%;
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
   box-shadow: 0 10px 6px -6px #777;
   border: 1px solid rgba(0, 0, 0, 0.15);
   .image {
-    width: 320px;
-    max-width: 100%;
-    height: 85%;
-    max-height: 480px;
+    height: 180px;
     position: relative;
     img {
       height: 100%;
@@ -120,7 +110,6 @@ export const SliderPaginationContainer = styled.div`
   font-weight: bold;
   word-spacing: 1px;
   text-align: center;
-  margin-top: 10px;
 `;
 
 export const ShowQuoteContainer = styled.section`
@@ -215,16 +204,6 @@ export const ShowQuoteContainer = styled.section`
           font-size: 0.875rem;
           font-weight: bold;
         }
-      }
-    }
-    .price {
-      > * {
-        font-size: 0.75rem;
-      }
-      & > :first-child {
-        margin-bottom: -5px;
-        font-size: 0.875rem;
-        font-weight: bold;
       }
     }
   }

@@ -9,12 +9,11 @@ import { getQuotes } from '../../apiCall/quoteSlice';
 
 import { QuotesContainer, SliderPaginationContainer } from './QuoteStyles.styled';
 
-const AllProducts = () => {
+const AllQuotes = () => {
 
   const loading = useSelector(state => state.quote.loaders.loadingQuotes);
   const error = useSelector(state => state.quote.errors.loadingQuotes);
   const quotes = useSelector(state => state.quote.quotes);
-
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,15 +31,15 @@ const AllProducts = () => {
         {quoteItems.length === 0 && !loading && !error ? (
           <p className="text-center">No quotes in the database.</p>
         ) : (
-          quotesItems
+          quoteItems
         )}
       </div>
       <SliderPaginationContainer>
         Total:
-        {productItems.length}
+        {quoteItems.length}
       </SliderPaginationContainer>
     </QuotesContainer>
   );
 };
 
-export default AllProducts;
+export default AllQuotes;

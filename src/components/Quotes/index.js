@@ -3,7 +3,7 @@ import MobileLayout from '../../containers/Layout/MobileLayout';
 import { MobileContainer } from '../Styles.styled';
 
 const Quotes = () => (
-    <MobileLayout title="Crafts" productPage={false}>
+    <MobileLayout title="Quote" QuotePage={false}>
         <MobileContainer>
             <AllQuotes />
         </MobileContainer>

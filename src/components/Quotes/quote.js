@@ -14,12 +14,13 @@ const Quote = ({ quote }) => {
 
     const {
         id,
-        name,
+        author,
         user_id: userId,
         image_url: imageUrl,
         ratings,
         favorited_by: favoritedBy,
     } = quote;
+
     const rating = ratings || Math.floor(Math.random() * Math.floor(6));
 
     return (
@@ -33,7 +34,7 @@ const Quote = ({ quote }) => {
                             <div className="likes">
                                 <p>
                                     Likes &nbsp;
-                  {favoritedBy.length}
+                                {favoritedBy.length}
                                 </p>
                                 <FavoriteButton className="favorite" id={+id} favoritedBy={favoritedBy} />
                             </div>
@@ -43,7 +44,7 @@ const Quote = ({ quote }) => {
 
                 <div className="flex">
                     <div className="details">
-                        <h3>{`${name.slice(0, 25)}`}</h3>
+                        <h3>{`${author.slice(0, 25)}`}</h3>
                         <ReactStars
                             count={5}
                             value={rating}
@@ -59,7 +60,7 @@ const Quote = ({ quote }) => {
     );
 };
 
-quote.propTypes = {
+Quote.propTypes = {
     quote: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

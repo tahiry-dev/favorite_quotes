@@ -10,7 +10,7 @@ const TestimonialSection = () => (
         <div className="articles">
             <article>
                 <img
-                    src="http://placekitten.com/20/40"
+                    src="http://placekitten.com/50/40"
                     alt="Kitten"
                     width="40"
                     height="40"
@@ -25,7 +25,7 @@ const TestimonialSection = () => (
 
             <article>
                 <img
-                    src="http://placekitten.com/80/40"
+                    src="http://placekitten.com/40/40"
                     alt="Kitten"
                     width="40"
                     height="40"

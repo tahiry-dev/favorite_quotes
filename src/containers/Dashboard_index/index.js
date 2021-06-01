@@ -1,9 +1,9 @@
 import AddQuoteForm from '../../components/Quotes/AddQuoteForm';
 import MobileLayout from '../Layout/MobileLayout';
-import { MobileContainer } from '../Styles.styled';
+import { MobileContainer } from '../../components/Styles.styled';
 
 const Dashboard = () => (
-    <MobileLayout title="Dashboard" productPage={false}>
+    <MobileLayout title="Dashboard" quotePage={false}>
         <MobileContainer>
             <div className="wrapper">
                 <header>

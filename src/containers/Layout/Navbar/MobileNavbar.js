@@ -10,14 +10,14 @@ import {
     MobileNavMenu,
     NavLink,
     SpecialLink,
-    MobileIcon,
+    MobileIcon
 } from './NavElements';
 
 const MobileNavbar = ({
-    toggle, sidebarIsOpen, productPage, title,
+    toggle, sidebarIsOpen, quotePage, title,
 }) => {
     const loggedIn = useSelector(state => state.user.loggedIn);
-    const productName = useSelector(state => state.quote.quote.name);
+    const quoteName = useSelector(state => state.quote.quote.name);
     const [scrolled, setScrolled] = useState(false);
     const history = useHistory();
 
@@ -44,7 +44,7 @@ const MobileNavbar = ({
         <>
             <Nav sidebarIsOpen={sidebarIsOpen} scrolled={scrolled} mobileView>
                 <NavContainer>
-                    {productPage ? (
+                    {quotePage ? (
                         <MobileIcon onClick={goBack}>
                             <FaArrowLeft />
                         </MobileIcon>
@@ -53,7 +53,7 @@ const MobileNavbar = ({
                             <FaBars />
                         </MobileIcon>
                     )}
-                    <h3>{productName && productPage ? productName : title}</h3>
+                    <h3>{quoteName && quotePage ? quoteName : title}</h3>
                     <MobileIcon className="search">
                         <FaSearch />
                     </MobileIcon>
@@ -83,7 +83,6 @@ const MobileNavbar = ({
 MobileNavbar.propTypes = {
     toggle: PropTypes.func.isRequired,
     sidebarIsOpen: PropTypes.bool.isRequired,
-    productPage: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
 };
 

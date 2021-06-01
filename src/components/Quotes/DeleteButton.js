@@ -18,7 +18,7 @@ const DeleteButton = ({ id, userId }) => {
         e.preventDefault();
         const response = window.confirm('Are you sure you want to delete the quote?');
         if (response) dispatch(deleteQuote(id));
-        history.push('/');
+        history.push('/creations');
     };
 
     return (

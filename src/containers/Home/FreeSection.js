@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import background from '../../../assets/HomePage/zen.jpg';
+import background from '../Home/HomePageAssets/zen.jpeg';
 
 const Container = styled.section`
   background: url(${background});
   background-position: center 53%;
+  background-repeat: no-repeat;
+  background-size: 100%;
   padding: 60px 15px;
   text-align: center;
   color: #fff;
@@ -26,10 +28,10 @@ export const Button = styled(Link)`
 `;
 
 const FreeSection = () => (
-    <Container>
-        <h3>Be everywhere at home!</h3>
-        <Button to="/sign_up">Start free</Button>
-    </Container>
+  <Container>
+    <h3>Share Your Positive Thoughts from home!</h3>
+    <Button to="/sign_up">Start free</Button>
+  </Container>
 );
 
 export default FreeSection;

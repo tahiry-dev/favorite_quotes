@@ -1,6 +1,6 @@
 import { DashboardContainer, Button } from './DashboardSection.styled';
 
-import dashboard from '../../../../assets/dashboard-section.png';
+import dashboard from '../HomePageAssets/dashboard-section.png';
 
 const DashboardSection = () => (
     <DashboardContainer id="dashboard">

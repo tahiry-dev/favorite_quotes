@@ -1,10 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
-
 import { logout } from '../../../apiCall/userSlice';
-// Assets
-import logo from '../../../assets/logo.png';
+import logo from '../../Home/HomePageAssets/logo.png';
 
 import {
     SidebarContainer,
@@ -56,7 +54,7 @@ const Sidebar = ({ isOpen, toggle }) => {
                         <h3>{name}</h3>
                         <p>
                             @
-              {nickname}
+                            {nickname}
                         </p>
                     </SidebarProfile>
 
@@ -64,28 +62,28 @@ const Sidebar = ({ isOpen, toggle }) => {
                         <SidebarItem>
                             <SidebarLink to="/dashboard">
                                 Add quote
-                {' '}
+                                {' '}
                                 <PlusIcon />
                             </SidebarLink>
                         </SidebarItem>
                         <SidebarItem>
                             <SidebarLink to="/quotes">
                                 quotes
-                {' '}
+                                {' '}
                                 <span>{quotesCount}</span>
                             </SidebarLink>
                         </SidebarItem>
                         <SidebarItem>
                             <SidebarLink to="/creations">
                                 My added quotes
-                {' '}
+                                {' '}
                                 <span>{createdCount}</span>
                             </SidebarLink>
                         </SidebarItem>
                         <SidebarItem>
                             <SidebarLink to="/favorites">
                                 My favorites
-                {' '}
+                                 {' '}
                                 <span>{favoritedCount}</span>
                             </SidebarLink>
                         </SidebarItem>
@@ -116,8 +114,8 @@ const Sidebar = ({ isOpen, toggle }) => {
             )}
             <SidebarLogo to="/">
                 <img src={logo} alt="brand logo" width="50" />
-        Quotes
-      </SidebarLogo>
+                Quotes
+            </SidebarLogo>
         </SidebarContainer>
     );
 };

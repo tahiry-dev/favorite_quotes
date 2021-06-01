@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import background from '../assets/showcase.jpg';
+import background from '../containers/Home/HomePageAssets/showcase.jpg';
 
 export const MainContainer = styled.div`
   transition: 0.1s ease-in;

@@ -7,7 +7,7 @@ import { addQuote } from '../../apiCall/quoteSlice';
 
 import { Form } from '../Styles.styled';
 
-const addQuoteForm = () => {
+const AddQuoteForm = () => {
     const user = useSelector(state => state.user.user);
     const loading = useSelector(state => state.quote.loaders.addQuote);
     const error = useSelector(state => state.quote.errors.addQuote);
@@ -31,7 +31,7 @@ const addQuoteForm = () => {
             <Form className="add-quote" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <input
-                        author="author"
+                        name="author"
                         placeholder="who is the author?"
                         ref={register({
                             required: {
@@ -48,12 +48,12 @@ const addQuoteForm = () => {
                             },
                         })}
                     />
-                    <p>{errors.name && errors.name.message}</p>
+                    <p>{errors.author && errors.author.message}</p>
                 </div>
                 <div>
                     <textarea
                         name="description"
-                        placeholder="teh quote itself"
+                        placeholder="Description of the message"
                         rows="5"
                         cols="20"
                         ref={register({
@@ -111,4 +111,4 @@ const addQuoteForm = () => {
     );
 };
 
-export default addQuoteForm;
+export default AddQuoteForm;

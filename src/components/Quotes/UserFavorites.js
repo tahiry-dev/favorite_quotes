@@ -26,8 +26,8 @@ const UserFavorites = () => {
             {loading ? <Loading /> : null}
             {error ? <Error errors={error} /> : null}
             <div className="slider">
-                {quotetItems.length === 0 && !loading && !error ? (
-                    <div className="no-products">
+                {quoteItems.length === 0 && !loading && !error ? (
+                    <div className="no-quotes">
                         <p>No quotes favorited by you.</p>
                         <Button to="/quotes"> Browse quotes</Button>
                     </div>
@@ -38,7 +38,7 @@ const UserFavorites = () => {
 
             <SliderPaginationContainer>
                 Total:
-        {productItems.length}
+        {quoteItems.length}
             </SliderPaginationContainer>
         </QuotesContainer>
     );

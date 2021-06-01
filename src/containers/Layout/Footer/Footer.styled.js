@@ -26,11 +26,14 @@ export const Logo = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px auto 0;
+  margin: 10px 46% 0;
   padding: 5px;
-  max-width: 100px;
+  width: 60px;
   color: #565656;
   font-size: 1.8rem;
   font-weight: bold;
+  .logo-title {
+    margin-bottom: 10px;
+  }
 `;
 

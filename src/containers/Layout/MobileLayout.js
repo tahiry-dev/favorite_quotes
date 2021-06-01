@@ -28,7 +28,6 @@ const MobileLayout = ({ children, quotePage, title }) => {
 };
 
 MobileLayout.propTypes = {
-    quotePage: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),

@@ -13,7 +13,7 @@ import {
     MobileIcon,
 } from './NavElements';
 
-import logo from '../../../assets/logo.png';
+import logo from '../../Home/HomePageAssets/logo.png';
 
 const Navbar = ({ toggle, sidebarIsOpen }) => {
 
@@ -39,9 +39,9 @@ const Navbar = ({ toggle, sidebarIsOpen }) => {
                     </MobileIcon>
 
                     <NavLogo to="/">
-                        <img src={logo} alt="Company brand logo" width="40" />
-            Quotes
-          </NavLogo>
+                        <img src={logo} alt="Company brand logo" width="50" />
+                         Your Favorite Quotes!
+                    </NavLogo>
 
                     <NavMenu>
                         {loggedIn ? (

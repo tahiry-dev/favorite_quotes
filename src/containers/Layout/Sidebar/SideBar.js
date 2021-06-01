@@ -19,15 +19,7 @@ export const SidebarContainer = styled.aside`
 
 export const SidebarLogo = styled(Link)`
   display: flex;
-  justify-content: center;
-  margin: 15px auto 0;
-  max-width: 100px;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 30px auto 0;
-  padding: 5px;
+  margin: 15px 10px 0;
   max-width: 100px;
   color: #565656;
   font-size: 1.8rem;

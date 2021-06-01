@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/quotes';
-
+const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/quotes'
 export const getQuotes = createAsyncThunk('quote/getQuotes', async () => {
     const response = await axios.get(baseUri);
     return response.data;

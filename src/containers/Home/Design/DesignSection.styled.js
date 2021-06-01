@@ -11,7 +11,7 @@ export const Container = styled.section`
   }
   .images {
     position: relative;
-    width: 100%;
+    width: 150%;
     min-height: 300px;
     display: block;
     img {
