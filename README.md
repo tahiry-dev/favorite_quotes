@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+[](https://img.shields.io/badge/-Microverse%20projects-blueviolet)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Favorite Quotes 
 
-## Available Scripts
+> The <b>Favorite Quotes</b> is an application where you can visit to get inspired by reading
+popular quotes from past Genius this world has encountered. You can also share your favorite inspiration
+either from you personally or from others.
 
-In the project directory, you can run:
+> <br>
+> API Backend used for data manipulation: [Favorite Quotes Backend](https://your-favorite-quotes-api.herokuapp.com/) <br>
+> The app is fully mobile responsive and tested using Jest and the React Testing Library.
+> <br>
 
-### `yarn start`
+## App functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Guests and users can view a list of quotes added by users.
+- Logged in users can like/favorite quotes, this will automatically add the quote to the favorite list and increase the like count for the product.
+- Users can click on a quote image to be routed to the quote show page where they can read it clearly
+- All the data manipulation and login system is handled by a Rails Backend API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## This web app is live, you can check it here: [Live demo]()
 
-### `yarn test`
+## Screenshot of the app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](readme-assets/app-screenshot.png)
 
-### `yarn build`
+## Rails Backend [github link](https://github.com/tahiry-dev/favorite_quotes_api/tree/feature_branch)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project specifications
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Project design received from Microverse [here](<https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)>), credit at the [bottom](#credits) of this README
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- React.js
+- create-react-app
+- Redux Toolkit
+- Axios
+- Styled components
+- Moment.js
+- Ruby on Rails for the Backend API
+- devise_token_auth for the login functionality
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Testing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Jest
+- React Testing Library
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Prerequisities
 
-## Learn More
+To get this project up and running locally, you must have [node](https://nodejs.org/en/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**To get this project set up on your local machine, follow these simple steps:**
 
-### Code Splitting
+**Step 1**<br>
+Navigate through the local folder where you want to clone the repository and run<br>
+`git clone https://github.com/tahiry-dev/favorite_quotes.git`. It will clone the repo to your local folder.<br>
+**Step 2**<br>
+get inside the local folder where you cloned the repository
+**Step 3**<br>
+Run `npm install` to install the npm packages from the `package.json` file.<br>
+**Step 4**<br>
+Run `npm start` to start the webpack server, you can now navigate to `http://localhost:3000` to view the app. The server refreshes the app every time you make a change to a file used by it.<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Tests
 
-### Analyzing the Bundle Size
+1. Open Terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install dependencies (only if you did not install them previously):
 
-### Making a Progressive Web App
+   `npm install`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Run the tests with the command:
 
-### Advanced Configuration
+   `npm test`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Authors
 
-### Deployment
+👤 **RANDRIAMIARINTSOA Tahiry**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Github: [tahiry_dev](https://github.com/tahiry-dev)
+- Twitter: [@tahiry](https://twitter.com/Tahiry94825074)
+- Linkedin: [Randriamiarintsoa](https://www.linkedin.com/in/tahiry-randriamiarintsoa/)
 
-### `yarn build` fails to minify
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Our favourite contributions are those that help us improve the project, whether with a contribution, an issue, or a feature request!
+
+## Show your support
+
+If you've read this far....give us a ⭐️!
+
+## 📝 License
+
+This project is licensed by Microverse and the Odin Project
+
+## Credits
+>) for the design on [behance](<https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)>)
+
+<a href='https://pngtree.com/so/company-logo'> logo from  pngtree.com</a>
+
+images from:
+ - https://unsplash.com/
+ - https://www.pexels.com/ 
+
+
