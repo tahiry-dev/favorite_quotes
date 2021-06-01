@@ -39,7 +39,7 @@ const Navbar = ({ toggle, sidebarIsOpen }) => {
 
           <NavLogo to="/">
             <img src={logo} alt="Company brand logo" width="50" />
-            Your Favorite Quotes!
+            <p>Your Favorite Quotes!</p>
           </NavLogo>
 
           <NavMenu>

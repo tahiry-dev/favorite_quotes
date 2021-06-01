@@ -35,6 +35,12 @@ export const NavLogo = styled(Link)`
   color: #fff;
   font-size: 1.6rem;
   margin-left: 15%;
+  @media screen and (max-width: 767px) {
+    margin-left: 20%;
+    p {
+      display: none;
+    }  
+  }
 `;
 
 export const NavMenu = styled.ul`

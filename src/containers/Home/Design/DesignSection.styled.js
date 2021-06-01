@@ -53,12 +53,20 @@ export const Container = styled.section`
       margin-bottom: 10px;
     }
   }
-  @media screen and (min-width: 768px) {
+
+  @media screen and (max-width: 768px) {
     .wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: row-reverse;
+    }
+  }
+
+  @media screen and (max-width: 642px) {
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 `;

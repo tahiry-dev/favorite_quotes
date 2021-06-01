@@ -12,6 +12,13 @@ export const HeroContainer = styled.section`
   height: 90vh;
   position: relative;
   z-index: 1;
+  @media screen and (max-width: 767px) {
+   height: 45vh;
+ }
+
+ @media (min-width:768px) and (max-width:1076px) {
+    height: 50vh;
+}
 `;
 
 export const HeroBg = styled.div`
@@ -51,6 +58,25 @@ export const HeroContent = styled.div`
     margin-top: 2px;
     margin-left: -50px;
   }
+  @media screen and (max-width: 767px) {
+     width: 100%;
+     margin: 0 auto;
+     
+    blockquote {
+      margin-top: 30px;
+      font-size: 14px;
+    }
+    figcaption  {
+        font-size: 12px;
+     }
+     .hero-header h1 {
+        display: none;
+     }
+  }
+  @media (min-width:768px) and (max-width:1076px) {
+    width: 50%;
+    margin-left: -50%;
+  }
 `;
 
 export const Button = styled(Link)`
@@ -60,6 +86,10 @@ export const Button = styled(Link)`
   margin-right: 10px;
   font-size: 0.675rem;
   text-shadow: none;
+ 
+  @media (min-width:768px) and (max-width:1076px) {
+   padding: 2px 5px;
+  }
 `;
 
 export const VideoLink = styled.a`
@@ -85,4 +115,9 @@ export const DownArrow = styled(ScrollLink)`
   & > :first-child {
     font-size: 2.5rem;
   }
+  @media screen and (max-width: 767px) {
+    position: absolute;
+    bottom: -15px;
+    right: calc(50% - 20px);
+ }
 `;
