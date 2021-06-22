@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 /* eslint-disable no-param-reassign */
-const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/api/v1/auth';
+const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/login';
 
 export const login = createAsyncThunk('user/login', async (data, { rejectWithValue }) => {
   try {
