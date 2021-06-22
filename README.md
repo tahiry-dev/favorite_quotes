@@ -98,7 +98,7 @@ If you've read this far....give us a ⭐️!
 This project is licensed by Microverse and the Odin Project
 
 ## Credits
->) for the design on [behance](<https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)>)
+For the design on [behance](<https://www.behance.net/gallery/37706679/Circle-(Landing-page-Dashboard-Mobile-App)>)
 
 <a href='https://pngtree.com/so/company-logo'> logo from  pngtree.com</a>
 
