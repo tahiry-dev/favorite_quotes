@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../Loading';
 import Error from '../Error';
@@ -7,7 +8,15 @@ import { getQuotes } from '../../apiCall/quoteSlice';
 import { QuotesContainer, SliderPaginationContainer, Button } from './QuoteStyles.styled';
 
 const UserQuotes = () => {
-  const currentUser = useSelector((state) => state.user.user);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    try {
+      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      setUserInfo(userInfo);
+    }
+    catch (e) { }
+  }, []);
+  const currentUser = userInfo;
   const loading = useSelector((state) => state.quote.loaders.loadingQuotes);
   const error = useSelector((state) => state.quote.errors.loadingQuotes);
   const quotes = useSelector((state) => state.quote.quotes);
@@ -18,7 +27,7 @@ const UserQuotes = () => {
   }, [dispatch]);
 
   const quoteItems = [...quotes]
-    .filter((quote) => quote.user_id === currentUser.id)
+    .filter((quote) => quote.user_id === currentUser.user_id)
     .map((quote) => <Quote key={quote.id} quote={quote} />);
 
   return (

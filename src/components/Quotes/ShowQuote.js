@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
 import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ReactStars from 'react-rating-stars-component';
+
 
 import FavoriteButton from './FavoriteButton';
 import DeleteButton from './DeleteButton';
@@ -15,11 +17,20 @@ import { getQuote } from '../../apiCall/quoteSlice';
 import { ShowQuoteContainer } from './QuoteStyles.styled';
 
 const ShowQuote = ({ id }) => {
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    try {
+      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      setUserInfo(userInfo);
+    }
+    catch (e) { }
+  }, []);
   // State
-  const currentUser = useSelector((state) => state.user.user);
+  const currentUser = userInfo;
   const quote = useSelector((state) => state.quote.quote);
   const loading = useSelector((state) => state.quote.loaders.loadingQuote);
   const error = useSelector((state) => state.quote.errors.loadingQuote);
+  const favoritedBy = useSelector((state) => state.quote.quote.favorited_by);
 
   // Props
   const {
@@ -30,8 +41,8 @@ const ShowQuote = ({ id }) => {
     user_name: userName,
     created_at: createdAt,
     updated_at: updatedAt,
-    favorited_by: favoritedBy,
   } = quote;
+
   const rating = ratings || Math.floor(Math.random() * Math.floor(6));
 
   // Effects
@@ -50,7 +61,7 @@ const ShowQuote = ({ id }) => {
       {error ? <Error errors={error} /> : null}
       <>
         <div className="image">
-          {currentUser.id ? (
+          {currentUser.user_id ? (
             <>
               {loading || error ? null : <DeleteButton userId={userId} id={+id} />}
               <div className="likes">

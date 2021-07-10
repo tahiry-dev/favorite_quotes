@@ -1,13 +1,23 @@
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import jwt_decode from 'jwt-decode';
 import { FaTimes } from 'react-icons/fa';
 import { deleteQuote } from '../../apiCall/quoteSlice';
 
 /* eslint-disable no-alert */
 
 const DeleteButton = ({ id, userId }) => {
-  const currentUser = useSelector((state) => state.user.user);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    try {
+      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      setUserInfo(userInfo);
+    }
+    catch (e) { }
+  }, []);
+  const currentUser = userInfo
   const deleteLoading = useSelector((state) => state.quote.loaders.deleteQuote);
   const deleteError = useSelector((state) => state.quote.errors.deleteQuote);
 
@@ -23,7 +33,7 @@ const DeleteButton = ({ id, userId }) => {
   return (
     <>
       {deleteError ? <p>{deleteError}</p> : null}
-      {currentUser.id === userId ? (
+      {currentUser.user_id === userId ? (
         <div className="delete-button">
           <button
             type="button"

@@ -1,21 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 /* eslint-disable no-param-reassign */
-const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/api/v1/auth';
+const baseUri = 'http://localhost:5000/api/v1';
 
 export const login = createAsyncThunk('user/login', async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`${baseUri}/sign_in`, data);
-    const {
-      data: { data: user },
-      headers,
-    } = response;
+    const response = await axios.post(`${baseUri}/login`, data);
+    const user = jwt_decode(response.data.token);
+    const { headers } = response;
     const header = {
       'access-token': headers['access-token'],
       client: headers.client,
       uid: headers.uid,
     };
-    localStorage.setItem('currentUser', JSON.stringify({ user, header }));
+    localStorage.setItem('currentUser', JSON.stringify(response.data.token));
 
     return { user, header };
   } catch (error) {
@@ -23,19 +22,17 @@ export const login = createAsyncThunk('user/login', async (data, { rejectWithVal
   }
 });
 
-export const signUp = createAsyncThunk('user/signUp', async (data, { rejectWithValue }) => {
+export const signUp = createAsyncThunk('user/signup', async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.post(baseUri, data);
-    const {
-      data: { data: user },
-      headers,
-    } = response;
+    const response = await axios.post(`${baseUri}/signup`, data);
+    const user = jwt_decode(response.data.token);
+    const { headers } = response;
     const header = {
       'access-token': headers['access-token'],
       client: headers.client,
       uid: headers.uid,
     };
-    localStorage.setItem('currentUser', JSON.stringify({ user, header }));
+    localStorage.setItem('currentUser', JSON.stringify(response.data.token));
 
     return { user, header };
   } catch (error) {

@@ -17,8 +17,9 @@ const UserFavorites = () => {
     dispatch(getQuotes());
   }, [dispatch]);
 
+  const quoteItemsLength = useSelector((state) => state.quote.quote.favorited_by
+    .some((favorite) => favorite.id === currentUser.id));
   const quoteItems = [...quotes]
-    .filter((quote) => quote.favorited_by.some((favorite) => favorite.id === currentUser.id))
     .map((quote) => <Quote key={quote.id} quote={quote} />);
 
   return (
@@ -26,7 +27,7 @@ const UserFavorites = () => {
       {loading ? <Loading /> : null}
       {error ? <Error errors={error} /> : null}
       <div className="slider">
-        {quoteItems.length === 0 && !loading && !error ? (
+        {quoteItemsLength.length === 0 && !loading && !error ? (
           <div className="no-quotes">
             <p>No quotes favorited by you.</p>
             <Button to="/quotes"> Browse quotes</Button>
@@ -38,7 +39,7 @@ const UserFavorites = () => {
 
       <SliderPaginationContainer>
         Total:
-        {quoteItems.length}
+        {quoteItemsLength.length}
       </SliderPaginationContainer>
     </QuotesContainer>
   );

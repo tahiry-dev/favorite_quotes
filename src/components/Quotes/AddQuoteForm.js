@@ -1,14 +1,23 @@
+import { useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Error from '../Error';
-
 import { addQuote } from '../../apiCall/quoteSlice';
 
 import { Form } from '../Styles.styled';
 
 const AddQuoteForm = () => {
-  const user = useSelector((state) => state.user.user);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    try {
+      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      setUserInfo(userInfo);
+    }
+    catch (e) { }
+  }, []);
+  const user = userInfo;
   const loading = useSelector((state) => state.quote.loaders.addQuote);
   const error = useSelector((state) => state.quote.errors.addQuote);
 
@@ -16,6 +25,7 @@ const AddQuoteForm = () => {
   const {
     register, handleSubmit, reset, errors,
   } = useForm();
+
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append('author', data.author);
@@ -93,7 +103,7 @@ const AddQuoteForm = () => {
           <input
             type="hidden"
             name="user_id"
-            defaultValue={user.id}
+            defaultValue={user.user_id}
             ref={register}
           />
         </div>

@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+// import jwt_decode from 'jwt-decode';
 
 /* eslint-disable no-param-reassign */
 
-const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/quotes';
+const baseUri = 'http://localhost:5000/quotes';
 export const getQuotes = createAsyncThunk('quote/getQuotes', async () => {
   const response = await axios.get(baseUri);
   return response.data;
@@ -20,7 +21,6 @@ export const addQuote = createAsyncThunk(
     try {
       const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
       const response = await axios.post(baseUri, formData, headers);
-
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
