@@ -25,6 +25,7 @@ const ShowQuote = ({ id }) => {
     }
     catch (e) { }
   }, []);
+
   // State
   const currentUser = userInfo;
   const quote = useSelector((state) => state.quote.quote);

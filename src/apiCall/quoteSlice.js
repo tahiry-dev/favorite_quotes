@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import jwt_decode from 'jwt-decode';
 
 /* eslint-disable no-param-reassign */
 
@@ -28,6 +27,7 @@ export const addQuote = createAsyncThunk(
   },
 );
 
+
 export const deleteQuote = createAsyncThunk('quote/deleteQuote', async (id) => {
   const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
   const response = await axios.delete(`${baseUri}/${id}`, { headers });
@@ -37,7 +37,6 @@ export const deleteQuote = createAsyncThunk('quote/deleteQuote', async (id) => {
 export const favorite = createAsyncThunk('quote/favorite', async ({ id, type, currentUser }) => {
   const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
   await axios.put(`${baseUri}/${id}/favorite`, { type }, { headers });
-
   return { id, type, currentUser };
 });
 

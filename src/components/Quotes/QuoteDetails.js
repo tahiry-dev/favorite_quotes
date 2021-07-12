@@ -5,7 +5,7 @@ import MobileLayout from '../../containers/Layout/MobileLayout';
 const QuoteDetails = ({ match }) => {
   const { id } = match.params;
   return (
-    <MobileLayout quotePage title="Quote">
+    <MobileLayout quotePage={true} title="Quote">
       <ShowQuote id={id} />
     </MobileLayout>
   );

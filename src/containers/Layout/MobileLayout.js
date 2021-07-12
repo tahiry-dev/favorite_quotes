@@ -6,10 +6,11 @@ import Sidebar from './Sidebar';
 
 import { MainContainer } from '../../components/Styles.styled';
 
-const MobileLayout = ({ children, quotePage, title }) => {
+const MobileLayout = ({ children, quotePage = false, title }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen((isOpen) => !isOpen);
 
+  console.log(`quotePage`, quotePage)
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
