@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import jwt_decode from 'jwt-decode';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
-
 
 import DeleteButton from './DeleteButton';
 import FavoriteButton from './FavoriteButton';
@@ -12,25 +11,24 @@ import FavoriteButton from './FavoriteButton';
 import { QuoteContainer } from './QuoteStyles.styled';
 
 const Quote = ({ quote }) => {
-
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
+    /* eslint-disable no-empty */
     try {
-      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
       setUserInfo(userInfo);
-    }
-    catch (e) { }
+    } catch (e) { }
   }, []);
+  /* eslint-enable  no-empty */
 
-  const currentUser = userInfo
-  const favoritedBy = useSelector((state) => state.quote.quote.favorited_by);
-
+  const currentUser = userInfo;
+  const { favorited_by: favoritedBy } = quote;
   const {
     id,
     author,
     user_id: userId,
     image_url: imageUrl,
-    ratings
+    ratings,
   } = quote;
 
   const rating = ratings || Math.floor(Math.random() * Math.floor(6));
@@ -48,12 +46,11 @@ const Quote = ({ quote }) => {
                   Likes &nbsp;
                   {favoritedBy.length}
                 </p>
-                <FavoriteButton className="favorite" id={+id} favoritedBy={favoritedBy} />
+                <FavoriteButton className="favorite" id={id} favoritedBy={favoritedBy} />
               </div>
             </>
           ) : null}
         </div>
-
         <div className="flex">
           <div className="details">
             <h3>{`${author.slice(0, 25)}`}</h3>
@@ -68,6 +65,7 @@ const Quote = ({ quote }) => {
           </div>
         </div>
       </Link>
+
     </QuoteContainer>
   );
 };

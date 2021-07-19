@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaPlayCircle, FaChevronDown } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import ImgBackground from '../HomePageAssets/zenBackground.jpg';

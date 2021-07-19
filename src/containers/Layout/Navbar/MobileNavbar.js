@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaBars, FaSearch } from 'react-icons/fa';
@@ -16,8 +17,8 @@ import {
 const MobileNavbar = ({
   toggle, sidebarIsOpen, quotePage, title,
 }) => {
-  const loggedIn = useSelector((state) => state.user.loggedIn);
-  const quoteName = useSelector((state) => state.quote.quote.name);
+  const loggedIn = useSelector(state => state.user.loggedIn);
+  const quoteName = useSelector(state => state.quote.quote.name);
   const [scrolled, setScrolled] = useState(false);
   const history = useHistory();
 
@@ -35,7 +36,7 @@ const MobileNavbar = ({
     };
   }, [scrolled]);
 
-  const goBack = (e) => {
+  const goBack = e => {
     e.preventDefault();
     history.goBack();
   };

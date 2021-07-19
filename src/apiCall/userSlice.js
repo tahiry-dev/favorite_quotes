@@ -1,20 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
+import Resp from './axiosCall';
+
 /* eslint-disable no-param-reassign */
 const baseUri = 'http://localhost:5000/api/v1';
 
 export const login = createAsyncThunk('user/login', async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`${baseUri}/login`, data);
-    const user = jwt_decode(response.data.token);
+    // const response = await axios.post(`${baseUri}/login`, data);
+    const response = await Resp.post(`${baseUri}/login`, data);
+    const user = jwtDecode(response.data.token);
     const { headers } = response;
     const header = {
       'access-token': headers['access-token'],
       client: headers.client,
       uid: headers.uid,
     };
-    localStorage.setItem('currentUser', JSON.stringify(response.data.token));
+    localStorage.setItem('currentUser', response.data.token);
 
     return { user, header };
   } catch (error) {
@@ -24,8 +26,9 @@ export const login = createAsyncThunk('user/login', async (data, { rejectWithVal
 
 export const signUp = createAsyncThunk('user/signup', async (data, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`${baseUri}/signup`, data);
-    const user = jwt_decode(response.data.token);
+    // const response = await axios.post(`${baseUri}/signup`, data);
+    const response = await Resp.post(`${baseUri}/signup`, data);
+    const user = jwtDecode(response.data.token);
     const { headers } = response;
     const header = {
       'access-token': headers['access-token'],
@@ -49,19 +52,19 @@ export const userSlice = createSlice({
     loggedIn: false,
   },
   reducers: {
-    logout: (state) => {
+    logout: state => {
       localStorage.removeItem('currentUser');
       state.user = {};
       state.headers = {};
       state.loggedIn = false;
     },
     loginFromStorage: (state, action) => {
-      state.user = action.payload;
+      state.user = jwtDecode(action.payload);
       state.loggedIn = true;
     },
   },
   extraReducers: {
-    [login.pending]: (state) => {
+    [login.pending]: state => {
       state.loaders.login = true;
       state.errors.login = false;
     },
@@ -76,7 +79,7 @@ export const userSlice = createSlice({
       state.errors.login = action.payload ? action.payload.errors : serverError;
       state.loaders.login = false;
     },
-    [signUp.pending]: (state) => {
+    [signUp.pending]: state => {
       state.loaders.signUp = true;
       state.errors.signUp = false;
     },

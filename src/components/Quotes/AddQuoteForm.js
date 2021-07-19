@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import jwt_decode from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,22 +12,23 @@ import { Form } from '../Styles.styled';
 const AddQuoteForm = () => {
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
+    /* eslint-disable no-empty */
     try {
-      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
       setUserInfo(userInfo);
-    }
-    catch (e) { }
+    } catch (e) { }
   }, []);
+  /* eslint-enable no-empty */
   const user = userInfo;
-  const loading = useSelector((state) => state.quote.loaders.addQuote);
-  const error = useSelector((state) => state.quote.errors.addQuote);
+  const loading = useSelector(state => state.quote.loaders.addQuote);
+  const error = useSelector(state => state.quote.errors.addQuote);
 
   const dispatch = useDispatch();
   const {
     register, handleSubmit, reset, errors,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     const formData = new FormData();
     formData.append('author', data.author);
     formData.append('description', data.description);

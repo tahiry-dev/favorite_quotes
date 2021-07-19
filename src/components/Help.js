@@ -1,3 +1,4 @@
+import React from 'react';
 import { QuotesContainer, Button } from './Quotes/QuoteStyles.styled';
 
 const Help = () => (

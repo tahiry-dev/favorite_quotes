@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import { FaBars, FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -16,7 +17,7 @@ import {
 import logo from '../../Home/HomePageAssets/logo.png';
 
 const Navbar = ({ toggle, sidebarIsOpen }) => {
-  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const loggedIn = useSelector(state => state.user.loggedIn);
 
   const [scrolled, setScrolled] = useState(false);
 

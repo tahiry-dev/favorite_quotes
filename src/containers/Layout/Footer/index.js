@@ -1,3 +1,4 @@
+import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import logo from '../../Home/HomePageAssets/logo.png';
 import { Container, Logo } from './Footer.styled';

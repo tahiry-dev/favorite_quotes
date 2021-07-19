@@ -1,16 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import Resp from './axiosCall';
 
 /* eslint-disable no-param-reassign */
 
 const baseUri = 'http://localhost:5000/quotes';
+
+const favoriteUri = 'http://localhost:5000';
+
 export const getQuotes = createAsyncThunk('quote/getQuotes', async () => {
-  const response = await axios.get(baseUri);
+  const response = await Resp.get(baseUri);
   return response.data;
 });
 
-export const getQuote = createAsyncThunk('quote/getQuote', async (id) => {
-  const response = await axios.get(`${baseUri}/${id}`);
+export const getQuote = createAsyncThunk('quote/getQuote', async id => {
+  const response = await Resp.get(`${baseUri}/${id}`);
   return response.data;
 });
 
@@ -18,8 +21,8 @@ export const addQuote = createAsyncThunk(
   'quote/addQuote',
   async (formData, { rejectWithValue }) => {
     try {
-      const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
-      const response = await axios.post(baseUri, formData, headers);
+      const headers = { token: localStorage.getItem('currentUser') };
+      const response = await Resp.post(baseUri, formData, headers);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -27,16 +30,16 @@ export const addQuote = createAsyncThunk(
   },
 );
 
-
-export const deleteQuote = createAsyncThunk('quote/deleteQuote', async (id) => {
-  const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
-  const response = await axios.delete(`${baseUri}/${id}`, { headers });
+export const deleteQuote = createAsyncThunk('quote/deleteQuote', async id => {
+  const headers = { token: localStorage.getItem('currentUser') };
+  const response = await Resp.delete(`${baseUri}/${id}`, { headers });
   return response.data;
 });
 
 export const favorite = createAsyncThunk('quote/favorite', async ({ id, type, currentUser }) => {
-  const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
-  await axios.put(`${baseUri}/${id}/favorite`, { type }, { headers });
+  const headers = { token: localStorage.getItem('currentUser') };
+  await Resp.put(`${favoriteUri}/${id}/favorite`, { type, quote: currentUser.user_id }, { headers });
+
   return { id, type, currentUser };
 });
 
@@ -50,7 +53,7 @@ export const quoteSlice = createSlice({
     quote: { user: {}, favorited_by: [] },
   },
   extraReducers: {
-    [getQuotes.pending]: (state) => {
+    [getQuotes.pending]: state => {
       state.loaders.loadingQuotes = true;
       state.errors.loadingQuotes = false;
     },
@@ -63,7 +66,7 @@ export const quoteSlice = createSlice({
       state.errors.loadingQuotes = action.error.message;
       state.loaders.loadingQuotes = false;
     },
-    [getQuote.pending]: (state) => {
+    [getQuote.pending]: state => {
       state.loaders.loadingQuote = true;
       state.errors.loadingQuote = false;
     },
@@ -76,7 +79,7 @@ export const quoteSlice = createSlice({
       state.errors.loadingQuote = action.error.message;
       state.loaders.loadingQuote = false;
     },
-    [addQuote.pending]: (state) => {
+    [addQuote.pending]: state => {
       state.loaders.addQuote = true;
       state.errors.addQuote = false;
     },
@@ -94,7 +97,7 @@ export const quoteSlice = createSlice({
       state.errors.deleteQuote = false;
     },
     [deleteQuote.fulfilled]: (state, action) => {
-      state.quotes = state.quotes.filter((quote) => quote.id !== action.payload.id);
+      state.quotes = state.quotes.filter(quote => quote.id !== action.payload.id);
       state.quote = { user: {}, favorited_by: [] };
       state.loaders.deleteQuote = false;
       state.errors.deleteQuote = false;
@@ -103,23 +106,23 @@ export const quoteSlice = createSlice({
       state.errors.deleteQuote = action.payload;
       state.loaders.deleteQuote = false;
     },
-    [favorite.pending]: (state, action) => {
-      state.loaders.favorite = action.meta.arg.id;
+    [favorite.pending]: state => {
+      state.loaders.favorite = true;
       state.errors.favorite = false;
     },
     [favorite.fulfilled]: (state, action) => {
       const { id, type, currentUser } = action.payload;
-      state.quotes.map((quote) => {
+      state.quotes.map(quote => {
         if (quote.id === id) {
           if (type === 'favorite') {
             quote.favorited_by.push(currentUser);
             state.quote.favorited_by.push(currentUser);
           } else {
             quote.favorited_by = quote.favorited_by.filter(
-              (favorite) => favorite.id !== currentUser.id,
+              favorite => favorite.id !== currentUser.id,
             );
             state.quote.favorited_by = state.quote.favorited_by.filter(
-              (favorite) => favorite.id !== currentUser.id,
+              favorite => favorite.id !== currentUser.id,
             );
           }
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import AllQuotes from './AllQuotes';
 import MobileLayout from '../../containers/Layout/MobileLayout';
 import { MobileContainer } from '../Styles.styled';

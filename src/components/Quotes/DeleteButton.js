@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import { FaTimes } from 'react-icons/fa';
 import { deleteQuote } from '../../apiCall/quoteSlice';
 
@@ -11,19 +12,20 @@ import { deleteQuote } from '../../apiCall/quoteSlice';
 const DeleteButton = ({ id, userId }) => {
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
+    /* eslint-disable no-empty */
     try {
-      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
       setUserInfo(userInfo);
-    }
-    catch (e) { }
+    } catch (e) { }
   }, []);
-  const currentUser = userInfo
-  const deleteLoading = useSelector((state) => state.quote.loaders.deleteQuote);
-  const deleteError = useSelector((state) => state.quote.errors.deleteQuote);
+  /* eslint-enable no-empty */
+  const currentUser = userInfo;
+  const deleteLoading = useSelector(state => state.quote.loaders.deleteQuote);
+  const deleteError = useSelector(state => state.quote.errors.deleteQuote);
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
     const response = window.confirm('Are you sure you want to delete the quote?');
     if (response) dispatch(deleteQuote(id));

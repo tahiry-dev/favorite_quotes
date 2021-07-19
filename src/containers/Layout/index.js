@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
@@ -9,7 +10,7 @@ const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Effects
-  const toggle = () => setIsOpen((isOpen) => !isOpen);
+  const toggle = () => setIsOpen(isOpen => !isOpen);
 
   return (
     <>

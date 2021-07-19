@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import ShowQuote from './ShowQuote';
 import MobileLayout from '../../containers/Layout/MobileLayout';
@@ -5,7 +6,7 @@ import MobileLayout from '../../containers/Layout/MobileLayout';
 const QuoteDetails = ({ match }) => {
   const { id } = match.params;
   return (
-    <MobileLayout quotePage={true} title="Quote">
+    <MobileLayout quotePage title="Quote">
       <ShowQuote id={id} />
     </MobileLayout>
   );

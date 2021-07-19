@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import jwt_decode from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import { useSelector, useDispatch } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ReactStars from 'react-rating-stars-component';
-
 
 import FavoriteButton from './FavoriteButton';
 import DeleteButton from './DeleteButton';
@@ -19,19 +19,20 @@ import { ShowQuoteContainer } from './QuoteStyles.styled';
 const ShowQuote = ({ id }) => {
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
+    /* eslint-disable no-empty */
     try {
-      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
       setUserInfo(userInfo);
-    }
-    catch (e) { }
+    } catch (e) { }
   }, []);
+  /* eslint-enable no-empty */
 
   // State
   const currentUser = userInfo;
-  const quote = useSelector((state) => state.quote.quote);
-  const loading = useSelector((state) => state.quote.loaders.loadingQuote);
-  const error = useSelector((state) => state.quote.errors.loadingQuote);
-  const favoritedBy = useSelector((state) => state.quote.quote.favorited_by);
+  const quote = useSelector(state => state.quote.quote);
+  const loading = useSelector(state => state.quote.loaders.loadingQuote);
+  const error = useSelector(state => state.quote.errors.loadingQuote);
+  const favoritedBy = useSelector(state => state.quote.quote.favorited_by);
 
   // Props
   const {

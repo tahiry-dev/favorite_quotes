@@ -1,3 +1,4 @@
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,12 +9,12 @@ import { signUp } from '../../apiCall/userSlice';
 import { Form } from '../Styles.styled';
 
 const SignUpForm = () => {
-  const signUpLoader = useSelector((state) => state.user.loaders.signUp);
-  const signUpError = useSelector((state) => state.user.errors.signUp);
+  const signUpLoader = useSelector(state => state.user.loaders.signUp);
+  const signUpError = useSelector(state => state.user.errors.signUp);
 
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     dispatch(signUp(data));
   };
 

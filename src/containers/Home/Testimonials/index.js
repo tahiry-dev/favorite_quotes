@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container } from './TestimonialSection.styled';
 
 const TestimonialSection = () => (

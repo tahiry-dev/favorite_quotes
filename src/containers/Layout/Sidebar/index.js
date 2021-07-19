@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
-import jwt_decode from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
@@ -23,28 +24,28 @@ import {
 const Sidebar = ({ isOpen, toggle }) => {
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
+    /* eslint-disable no-empty */
     try {
-      const userInfo = jwt_decode(localStorage.getItem('currentUser'))
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
       setUserInfo(userInfo);
-    }
-    catch (e) { }
+    } catch (e) { }
   }, []);
+  /* eslint-enable no-empty */
 
-  const loggedIn = useSelector((state) => state.user.loggedIn);
-  const user = userInfo
-  const quotesCount = useSelector((state) => state.quote.quotes.length);
+  const loggedIn = useSelector(state => state.user.loggedIn);
+  const user = userInfo;
+  const quotesCount = useSelector(state => state.quote.quotes.length);
   const createdCount = useSelector(
-    (state) => state.quote.quotes.filter((quote) => quote.user_id === user.user_id).length,
+    state => state.quote.quotes.filter(quote => quote.user_id === user.user_id).length,
   );
 
-  const favorited = useSelector((state) => state.quote.quote.favorited_by
-    .some((favorite) => favorite.id === user.user_id));
+  const favorited = useSelector(state => state.quote.quote.favorited_by);
 
   const favoritedCount = favorited.length;
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleLogout = (e) => {
+  const handleLogout = e => {
     e.preventDefault();
     dispatch(logout());
     history.push('/');

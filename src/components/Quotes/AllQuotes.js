@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 
 import Loading from '../Loading';
@@ -10,16 +11,16 @@ import { getQuotes } from '../../apiCall/quoteSlice';
 import { QuotesContainer, SliderPaginationContainer } from './QuoteStyles.styled';
 
 const AllQuotes = () => {
-  const loading = useSelector((state) => state.quote.loaders.loadingQuotes);
-  const error = useSelector((state) => state.quote.errors.loadingQuotes);
-  const quotes = useSelector((state) => state.quote.quotes);
+  const loading = useSelector(state => state.quote.loaders.loadingQuotes);
+  const error = useSelector(state => state.quote.errors.loadingQuotes);
+  const quotes = useSelector(state => state.quote.quotes);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getQuotes());
   }, [dispatch]);
 
-  const quoteItems = [...quotes].map((quote) => <Quote key={quote.id} quote={quote} />);
+  const quoteItems = [...quotes].map(quote => <Quote key={quote.id} quote={quote} />);
 
   return (
     <QuotesContainer>
