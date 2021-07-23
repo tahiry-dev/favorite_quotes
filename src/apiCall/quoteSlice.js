@@ -3,9 +3,9 @@ import Resp from './axiosCall';
 
 /* eslint-disable no-param-reassign */
 
-const baseUri = 'http://localhost:5000/quotes';
+const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/quotes';
 
-const favoriteUri = 'http://localhost:5000/';
+const favoriteUri = 'https://your-favorite-quotes-api.herokuapp.com/';
 
 export const getQuotes = createAsyncThunk('quote/getQuotes', async () => {
   const response = await Resp.get(baseUri);
