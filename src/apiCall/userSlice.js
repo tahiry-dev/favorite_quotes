@@ -4,7 +4,6 @@ import Resp from './axiosCall';
 
 /* eslint-disable no-param-reassign */
 const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/api/v1';
-
 export const login = createAsyncThunk('user/login', async (data, { rejectWithValue }) => {
   try {
     const response = await Resp.post(`${baseUri}/login`, data);
