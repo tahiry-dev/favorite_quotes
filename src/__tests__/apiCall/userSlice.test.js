@@ -5,7 +5,7 @@ import { render, cleanup } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import App from '../../App';
-import { login, logout } from '../../apiCall/userSlice';
+import { logout } from '../../apiCall/userSlice';
 
 afterEach(() => {
   cleanup();

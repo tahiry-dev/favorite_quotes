@@ -30,5 +30,4 @@ describe('quotes page', () => {
     expect(getAllByText(/Quotes/i).length).toBeGreaterThanOrEqual(1);
     expect(getByText(/total/i)).toBeTruthy();
   });
-
 });
