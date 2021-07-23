@@ -3,11 +3,11 @@ import jwtDecode from 'jwt-decode';
 import Resp from './axiosCall';
 
 /* eslint-disable no-param-reassign */
+// const baseUri = 'https://your-favorite-quotes-api.herokuapp.com/api/v1';
 const baseUri = 'http://localhost:5000/api/v1';
 
 export const login = createAsyncThunk('user/login', async (data, { rejectWithValue }) => {
   try {
-    // const response = await axios.post(`${baseUri}/login`, data);
     const response = await Resp.post(`${baseUri}/login`, data);
     const user = jwtDecode(response.data.token);
     const { headers } = response;
@@ -26,7 +26,6 @@ export const login = createAsyncThunk('user/login', async (data, { rejectWithVal
 
 export const signUp = createAsyncThunk('user/signup', async (data, { rejectWithValue }) => {
   try {
-    // const response = await axios.post(`${baseUri}/signup`, data);
     const response = await Resp.post(`${baseUri}/signup`, data);
     const user = jwtDecode(response.data.token);
     const { headers } = response;

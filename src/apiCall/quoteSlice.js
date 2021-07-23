@@ -5,7 +5,7 @@ import Resp from './axiosCall';
 
 const baseUri = 'http://localhost:5000/quotes';
 
-const favoriteUri = 'http://localhost:5000';
+const favoriteUri = 'http://localhost:5000/';
 
 export const getQuotes = createAsyncThunk('quote/getQuotes', async () => {
   const response = await Resp.get(baseUri);
@@ -47,67 +47,67 @@ export const quoteSlice = createSlice({
   name: 'quote',
   initialState: {
     quotes: [],
-    loaders: {},
+    quoteLoaders: {},
     errors: {},
     filters: {},
     quote: { user: {}, favorited_by: [] },
   },
   extraReducers: {
     [getQuotes.pending]: state => {
-      state.loaders.loadingQuotes = true;
+      state.quoteLoaders.loadingQuotes = true;
       state.errors.loadingQuotes = false;
     },
     [getQuotes.fulfilled]: (state, action) => {
       state.quotes = action.payload;
-      state.loaders.loadingQuotes = false;
+      state.quoteLoaders.loadingQuotes = false;
       state.errors.loadingQuotes = false;
     },
     [getQuotes.rejected]: (state, action) => {
       state.errors.loadingQuotes = action.error.message;
-      state.loaders.loadingQuotes = false;
+      state.quoteLoaders.loadingQuotes = false;
     },
     [getQuote.pending]: state => {
-      state.loaders.loadingQuote = true;
+      state.quoteLoaders.loadingQuote = true;
       state.errors.loadingQuote = false;
     },
     [getQuote.fulfilled]: (state, action) => {
       state.quote = action.payload;
-      state.loaders.loadingQuote = false;
+      state.quoteLoaders.loadingQuote = false;
       state.errors.loadingQuote = false;
     },
     [getQuote.rejected]: (state, action) => {
       state.errors.loadingQuote = action.error.message;
-      state.loaders.loadingQuote = false;
+      state.quoteLoaders.loadingQuote = false;
     },
     [addQuote.pending]: state => {
-      state.loaders.addQuote = true;
+      state.quoteLoaders.addQuote = true;
       state.errors.addQuote = false;
     },
     [addQuote.fulfilled]: (state, action) => {
       state.quotes.unshift(action.payload);
-      state.loaders.addQuote = false;
+      state.quoteLoaders.addQuote = false;
       state.errors.addQuote = false;
     },
     [addQuote.rejected]: (state, action) => {
       state.errors.addQuote = action.payload;
-      state.loaders.addQuote = false;
+      state.quoteLoaders.addQuote = false;
     },
     [deleteQuote.pending]: (state, action) => {
-      state.loaders.deleteQuote = action.meta.arg.id;
+      state.quoteLoaders.deleteQuote = action.meta.arg.id;
       state.errors.deleteQuote = false;
     },
     [deleteQuote.fulfilled]: (state, action) => {
       state.quotes = state.quotes.filter(quote => quote.id !== action.payload.id);
       state.quote = { user: {}, favorited_by: [] };
-      state.loaders.deleteQuote = false;
+      state.quoteLoaders.deleteQuote = false;
       state.errors.deleteQuote = false;
     },
     [deleteQuote.rejected]: (state, action) => {
       state.errors.deleteQuote = action.payload;
-      state.loaders.deleteQuote = false;
+      state.quoteLoaders.deleteQuote = false;
     },
     [favorite.pending]: state => {
-      state.loaders.favorite = true;
+      state.quoteLoaders.favorite = true;
       state.errors.favorite = false;
     },
     [favorite.fulfilled]: (state, action) => {
@@ -130,12 +130,12 @@ export const quoteSlice = createSlice({
         }
         return quote;
       });
-      state.loaders.favorite = false;
+      state.quoteLoaders.favorite = false;
       state.errors.favorite = false;
     },
     [favorite.rejected]: (state, action) => {
       state.errors.favorite = action.error.message;
-      state.loaders.favorite = false;
+      state.quoteLoaders.favorite = false;
     },
   },
 });

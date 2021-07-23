@@ -30,7 +30,7 @@ const ShowQuote = ({ id }) => {
   // State
   const currentUser = userInfo;
   const quote = useSelector(state => state.quote.quote);
-  const loading = useSelector(state => state.quote.loaders.loadingQuote);
+  const loading = useSelector(state => state.quote.quoteLoaders.loadingQuote);
   const error = useSelector(state => state.quote.errors.loadingQuote);
   const favoritedBy = useSelector(state => state.quote.quote.favorited_by);
 

@@ -15,7 +15,7 @@ const FavoriteButton = ({ id, favoritedBy }) => {
     allow_password_change: false,
   };
 
-  const favoriteLoading = useSelector(state => state.quote.loaders.favorite);
+  const favoriteLoading = useSelector(state => state.quote.quoteLoaders.favorite);
   const favoriteError = useSelector(state => state.quote.errors.favorite);
   const isFavorited = favoritedBy.some(user => user.user_id === currentUser.user_id);
   const type = isFavorited ? 'unfavorite' : 'favorite';

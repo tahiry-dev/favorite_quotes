@@ -39,7 +39,9 @@ const Sidebar = ({ isOpen, toggle }) => {
     state => state.quote.quotes.filter(quote => quote.user_id === user.user_id).length,
   );
 
-  const favorited = useSelector(state => state.quote.quote.favorited_by);
+  const favorited = useSelector(state => state.quote.quotes
+    .filter(quote => quote.favorited_by
+      .some(favorite => favorite.id === user.user_id)));
 
   const favoritedCount = favorited.length;
 
