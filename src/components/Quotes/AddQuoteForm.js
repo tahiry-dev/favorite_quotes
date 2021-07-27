@@ -20,8 +20,8 @@ const AddQuoteForm = () => {
   }, []);
   /* eslint-enable no-empty */
   const user = userInfo;
-  const loading = useSelector(state => state.quote.quoteLoaders.addQuote);
-  const error = useSelector(state => state.quote.errors.addQuote);
+  const loading = useSelector(state => state.quote.thisLoaders.addQuote);
+  const error = useSelector(state => state.quote.thisErrors.addQuote);
 
   const dispatch = useDispatch();
   const {

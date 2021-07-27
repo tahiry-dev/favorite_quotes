@@ -19,8 +19,8 @@ const UserQuotes = () => {
   }, []);
   /* eslint-enable no-empty */
   const currentUser = userInfo;
-  const loading = useSelector(state => state.quote.quoteLoaders.loadingQuotes);
-  const error = useSelector(state => state.quote.errors.loadingQuotes);
+  const loading = useSelector(state => state.quote.thisLoaders.loadingQuotes);
+  const error = useSelector(state => state.quote.thisErrors.loadingQuotes);
   const quotes = useSelector(state => state.quote.quotes);
 
   const dispatch = useDispatch();

@@ -20,8 +20,8 @@ const DeleteButton = ({ id, userId }) => {
   }, []);
   /* eslint-enable no-empty */
   const currentUser = userInfo;
-  const deleteLoading = useSelector(state => state.quote.quoteLoaders.deleteQuote);
-  const deleteError = useSelector(state => state.quote.errors.deleteQuote);
+  const deleteLoading = useSelector(state => state.loader);
+  const deleteError = useSelector(state => state.quote.thisErrors.deleteQuote);
 
   const history = useHistory();
   const dispatch = useDispatch();

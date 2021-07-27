@@ -11,8 +11,8 @@ import { getQuotes } from '../../apiCall/quoteSlice';
 import { QuotesContainer, SliderPaginationContainer } from './QuoteStyles.styled';
 
 const AllQuotes = () => {
-  const loading = useSelector(state => state.quote.quoteLoaders.loadingQuotes);
-  const error = useSelector(state => state.quote.errors.loadingQuotes);
+  const loading = useSelector(state => state.loader.quoteLoaders.loadingQuotes);
+  const error = useSelector(state => state.error.errors.loadingQuotes);
   const quotes = useSelector(state => state.quote.quotes);
 
   const dispatch = useDispatch();
