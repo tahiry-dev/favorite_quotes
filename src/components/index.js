@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Home from '../containers/Home';
@@ -14,18 +15,17 @@ import Help from './Help';
 import { loginFromStorage } from '../apiCall/userSlice';
 
 const Main = () => {
-  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const loggedIn = useSelector(state => state.user.loggedIn);
 
   const dispatch = useDispatch();
+  /* eslint-disable no-unused-expressions */
   useEffect(() => {
     if (!loggedIn) {
       const userData = localStorage.getItem('currentUser');
-      if (userData) {
-        const { user } = JSON.parse(userData);
-        dispatch(loginFromStorage(user));
-      }
+      userData && dispatch(loginFromStorage(userData));
     }
   }, [dispatch, loggedIn]);
+  /* eslint-enable no-unused-expressions */
 
   return (
     <>

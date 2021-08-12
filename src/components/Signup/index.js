@@ -1,3 +1,4 @@
+import React from 'react';
 import SignUpForm from './SignupForm';
 import { Container, StyledLink } from '../Styles.styled';
 

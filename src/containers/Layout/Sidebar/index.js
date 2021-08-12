@@ -1,6 +1,10 @@
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
+
 import { logout } from '../../../apiCall/userSlice';
 import logo from '../../Home/HomePageAssets/logo.png';
 
@@ -18,21 +22,32 @@ import {
 } from './SideBar';
 
 const Sidebar = ({ isOpen, toggle }) => {
-  const loggedIn = useSelector((state) => state.user.loggedIn);
-  const user = useSelector((state) => state.user.user);
-  const quotesCount = useSelector((state) => state.quote.quotes.length);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    /* eslint-disable no-empty */
+    try {
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
+      setUserInfo(userInfo);
+    } catch (e) { }
+  }, []);
+  /* eslint-enable no-empty */
+
+  const loggedIn = useSelector(state => state.user.loggedIn);
+  const user = userInfo;
+  const quotesCount = useSelector(state => state.quote.quotes.length);
   const createdCount = useSelector(
-    (state) => state.quote.quotes.filter((quote) => quote.user_id === user.id).length,
+    state => state.quote.quotes.filter(quote => quote.user_id === user.user_id).length,
   );
 
-  /* eslint-disable max-len */
-  const favorited = useSelector((state) => state.quote.quotes.filter((quote) => quote.favorited_by.some((favorite) => favorite.id === user.id)));
-  /* eslint-enable max-len */
+  const favorited = useSelector(state => state.quote.quotes
+    .filter(quote => quote.favorited_by
+      .some(favorite => favorite.id === user.user_id)));
+
   const favoritedCount = favorited.length;
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const handleLogout = (e) => {
+  const handleLogout = e => {
     e.preventDefault();
     dispatch(logout());
     history.push('/');

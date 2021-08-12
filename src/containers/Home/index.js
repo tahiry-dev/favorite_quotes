@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import HeroSection from './Hero';
 import DashboardSection from './Dashboard';
@@ -10,7 +11,7 @@ import Layout from '../Layout';
 import { getQuotes } from '../../apiCall/quoteSlice';
 
 const Home = () => {
-  const quotes = useSelector((state) => state.quote.quotes);
+  const quotes = useSelector(state => state.quote.quotes);
   const dispatch = useDispatch();
   useEffect(() => {
     if (quotes.length === 0) dispatch(getQuotes());

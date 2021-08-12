@@ -1,4 +1,6 @@
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
@@ -9,15 +11,24 @@ import FavoriteButton from './FavoriteButton';
 import { QuoteContainer } from './QuoteStyles.styled';
 
 const Quote = ({ quote }) => {
-  const currentUser = useSelector((state) => state.user.user);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    /* eslint-disable no-empty */
+    try {
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
+      setUserInfo(userInfo);
+    } catch (e) { }
+  }, []);
+  /* eslint-enable  no-empty */
 
+  const currentUser = userInfo;
+  const { favorited_by: favoritedBy } = quote;
   const {
     id,
     author,
     user_id: userId,
     image_url: imageUrl,
     ratings,
-    favorited_by: favoritedBy,
   } = quote;
 
   const rating = ratings || Math.floor(Math.random() * Math.floor(6));
@@ -27,7 +38,7 @@ const Quote = ({ quote }) => {
       <Link to={`/quotes/${id}`}>
         <div className="image">
           <img src={imageUrl} alt="Quote" />
-          {currentUser.id ? (
+          {currentUser.user_id ? (
             <>
               <DeleteButton userId={userId} id={+id} />
               <div className="likes">
@@ -35,12 +46,11 @@ const Quote = ({ quote }) => {
                   Likes &nbsp;
                   {favoritedBy.length}
                 </p>
-                <FavoriteButton className="favorite" id={+id} favoritedBy={favoritedBy} />
+                <FavoriteButton className="favorite" id={id} favoritedBy={favoritedBy} />
               </div>
             </>
           ) : null}
         </div>
-
         <div className="flex">
           <div className="details">
             <h3>{`${author.slice(0, 25)}`}</h3>
@@ -55,6 +65,7 @@ const Quote = ({ quote }) => {
           </div>
         </div>
       </Link>
+
     </QuoteContainer>
   );
 };

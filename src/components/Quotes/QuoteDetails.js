@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import ShowQuote from './ShowQuote';
 import MobileLayout from '../../containers/Layout/MobileLayout';

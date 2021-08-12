@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+
 import PropTypes from 'prop-types';
 
 import MobileNavbar from './Navbar/MobileNavbar';
@@ -6,9 +7,9 @@ import Sidebar from './Sidebar';
 
 import { MainContainer } from '../../components/Styles.styled';
 
-const MobileLayout = ({ children, quotePage, title }) => {
+const MobileLayout = ({ children, quotePage = false, title }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen((isOpen) => !isOpen);
+  const toggle = () => setIsOpen(isOpen => !isOpen);
 
   return (
     <>

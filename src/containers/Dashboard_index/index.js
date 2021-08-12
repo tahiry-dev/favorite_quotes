@@ -1,3 +1,4 @@
+import React from 'react';
 import AddQuoteForm from '../../components/Quotes/AddQuoteForm';
 import MobileLayout from '../Layout/MobileLayout';
 import { MobileContainer } from '../../components/Styles.styled';

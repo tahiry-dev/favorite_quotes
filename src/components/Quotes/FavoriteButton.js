@@ -1,20 +1,27 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { favorite } from '../../apiCall/quoteSlice';
-
 import { FavoriteIcon, UnfavoriteIcon } from './QuoteStyles.styled';
 
 const FavoriteButton = ({ id, favoritedBy }) => {
-  const currentUser = useSelector((state) => state.user.user);
-  const favoriteLoading = useSelector((state) => state.quote.loaders.favorite);
-  const favoriteError = useSelector((state) => state.quote.errors.favorite);
+  const currentUser = {
+    id: 1,
+    email: 'tahiry@example2.com',
+    provider: 'email',
+    name: 'Tahiry',
+    nickname: 'testTahiry',
+    uid: 'tahiry@example2.com',
+    allow_password_change: false,
+  };
 
-  const isFavorited = favoritedBy.some((user) => user.id === currentUser.id);
+  const favoriteLoading = useSelector(state => state.quote.thisLoaders.favorite);
+  const favoriteError = useSelector(state => state.quote.thisErrors.favorite);
+  const isFavorited = favoritedBy.some(user => user.user_id === currentUser.user_id);
   const type = isFavorited ? 'unfavorite' : 'favorite';
 
   const dispatch = useDispatch();
-  const handleFavorite = (e) => {
+  const handleFavorite = e => {
     e.preventDefault();
     dispatch(favorite({ id, type, currentUser }));
   };
@@ -24,6 +31,7 @@ const FavoriteButton = ({ id, favoritedBy }) => {
       <button
         type="button"
         onClick={handleFavorite}
+        data-item-id={id}
         disabled={favoriteLoading && favoriteLoading === id}
       >
         {isFavorited ? <UnfavoriteIcon /> : <FavoriteIcon />}

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container, Button } from './DesignSection.styled';
 import quote1 from '../HomePageAssets/quote1.jpg';
 import quote2 from '../HomePageAssets/quote2.jpg';

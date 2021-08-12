@@ -1,3 +1,4 @@
+import React from 'react';
 import UserFavorites from './UserFavorites';
 import MobileLayout from '../../containers/Layout/MobileLayout';
 

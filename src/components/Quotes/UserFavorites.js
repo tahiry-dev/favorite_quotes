@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import jwtDecode from 'jwt-decode';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../Loading';
 import Error from '../Error';
@@ -7,10 +9,20 @@ import { getQuotes } from '../../apiCall/quoteSlice';
 import { QuotesContainer, SliderPaginationContainer, Button } from './QuoteStyles.styled';
 
 const UserFavorites = () => {
-  const currentUser = useSelector((state) => state.user.user);
-  const loading = useSelector((state) => state.quote.loaders.loadingQuotes);
-  const error = useSelector((state) => state.quote.errors.loadingQuotes);
-  const quotes = useSelector((state) => state.quote.quotes);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    /* eslint-disable no-empty */
+    try {
+      const userInfo = jwtDecode(localStorage.getItem('currentUser'));
+      setUserInfo(userInfo);
+    } catch (e) { }
+  }, []);
+  /* eslint-enable no-empty */
+
+  const currentUser = userInfo;
+  const loading = useSelector(state => state.quote.thisLoaders.loadingQuotes);
+  const error = useSelector(state => state.quote.thisErrors.loadingQuotes);
+  const quotes = useSelector(state => state.quote.quotes);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,8 +30,9 @@ const UserFavorites = () => {
   }, [dispatch]);
 
   const quoteItems = [...quotes]
-    .filter((quote) => quote.favorited_by.some((favorite) => favorite.id === currentUser.id))
-    .map((quote) => <Quote key={quote.id} quote={quote} />);
+    .filter(quoteElement => quoteElement.favorited_by
+      .some(favorite => favorite.id === currentUser.user_id))
+    .map(quoteElement => <Quote key={quoteElement.id} quote={quoteElement} />);
 
   return (
     <QuotesContainer>
@@ -43,5 +56,4 @@ const UserFavorites = () => {
     </QuotesContainer>
   );
 };
-
 export default UserFavorites;

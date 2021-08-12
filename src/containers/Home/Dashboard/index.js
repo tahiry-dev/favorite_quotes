@@ -1,3 +1,4 @@
+import React from 'react';
 import { DashboardContainer, Button } from './DashboardSection.styled';
 
 import dashboard from '../HomePageAssets/dashboard-section.png';

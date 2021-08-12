@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import MobileLayout from '../containers/Layout';
@@ -5,11 +6,11 @@ import { logout } from '../apiCall/userSlice';
 import { Account } from './Styles.styled';
 
 const UserDetails = () => {
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state.user.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleLogout = (e) => {
+  const handleLogout = e => {
     e.preventDefault();
     dispatch(logout());
     history.push('/');

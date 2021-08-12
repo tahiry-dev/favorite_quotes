@@ -5,7 +5,7 @@ import { render, cleanup } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import App from '../../App';
-import { login, logout } from '../../apiCall/userSlice';
+import { logout } from '../../apiCall/userSlice';
 
 afterEach(() => {
   cleanup();
@@ -25,13 +25,6 @@ describe('userSlice async actions and initial state', () => {
     expect(user).toStrictEqual({});
     expect(loaders).toStrictEqual({});
     expect(errors).toStrictEqual({});
-  });
-
-  test('login fetches the User from the API and populates the user data object', async () => {
-    await store.dispatch(login({ email: 'unitTest@example.com', password: '12345678' }));
-    const { user } = store.getState().user;
-
-    expect(user.length).not.toStrictEqual(0);
   });
 
   test('logout clearer the User from the store', async () => {
